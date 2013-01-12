@@ -17,7 +17,10 @@ $myACL = new ACL();
 <div id="header"></div>
 <div id="adminButton"><a href="admin/">Admin Page</a></div>
 <div id="page">
+	<?php if(isset($_GET['no_perm'])): ?>
 	<div class="error">You don't have access to Admin Page</div>
+	<?php endif; ?>
+	
 	<h2>Permissions for <?= $myACL->getUsername($userID); ?>:</h2>
 	<? 
 		$userACL = new ACL($userID);
