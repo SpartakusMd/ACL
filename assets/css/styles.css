@@ -11,9 +11,11 @@ body {
 	color: #000;
 	font-size: 12px;
 }
+
 a {
 	color: #000;
 }
+
 #header {
 	background: url(../img/headerLogo.png) top left no-repeat;
 	position: absolute;
@@ -22,6 +24,7 @@ a {
 	width: 288px;
 	height: 93px;
 }
+
 #page {
 	position: relative;
 	left: 10px;
@@ -30,6 +33,7 @@ a {
 	width: 700px;
 	padding: 5px;
 }
+
 #adminButton {
 	position: absolute;
 	top: 50px;
@@ -37,14 +41,32 @@ a {
 	padding: 3px;
 	background-color: #fff;
 }
-input[type=button],input[type=submit] {;
+
+input[type=button], input[type=submit] {;
 	background-color: #9b1b1b;
 	color: #fff;
 	border: 1px solid #690101;
 	padding: 2px;
 	margin: 3px;
 }
+
 label {
 	font-weight: bold;
 	margin-right: 10px;
 }
+
+/* Messages */
+.error, .notice, .success {
+	border: 1px solid #DDD;
+	margin-bottom: 1em;
+	padding: 0.6em 0.8em;
+}
+
+.error {background: #FBE3E4; color: #8A1F11; border-color: #FBC2C4;}
+.error a {color: #8A1F11;}
+
+.notice {background: #FFF6BF; color: #514721; border-color: #FFD324;}
+.notice a {color: #514721;}
+
+.success {background: #E6EFC2; color: #264409; border-color: #C6D880;}
+.success a {color: #264409;}

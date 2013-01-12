@@ -2,6 +2,7 @@ ACL
 ===
 
 A Simple PHP ACL
+This ACL gives you control over the users, user roles and their permissions.
 
 INSTALL STEPS:
 ===
@@ -15,7 +16,5 @@ INSTALL STEPS:
 7. Once it finishes running the SQL commands to create the tables it will redirect you to the index page.
 8. Delete install.php, install.sql, and sampleData.sql.
 
-NOTE: If you change the ACL permissions so that user #1 no longer has the 'access_admin'
-permission, you won't be able to access the admin site because userID = 1 is hardcoded in /index.php.
-Also, you must first go to /index.php before you go to any of the admin pages, as index.php
-sets the session variable assigning you userID #1.
+NOTE: If you change the ACL permissions so that user #1 no longer has the 'access_admin' permission,
+you won't be able to access the admin site because only userID = 1 has access to Admin Area by default.

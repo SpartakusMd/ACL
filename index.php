@@ -2,8 +2,9 @@
 include("assets/php/database.php"); 
 include("assets/php/class.acl.php");
 
-$userID = $_GET['userID'];
-$_SESSION['userID'] = 1;
+$userID = $_SESSION['userID'];
+$userID = (isset($_GET['userID']) && $_GET['userID'] > 0 ? $_GET['userID'] : $userID);
+$_SESSION['userID'] = $userID;
 $myACL = new ACL();
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,8 +15,9 @@ $myACL = new ACL();
 </head>
 <body>
 <div id="header"></div>
-<div id="adminButton"><a href="admin/">Admin Screen</a></div>
+<div id="adminButton"><a href="admin/">Admin Page</a></div>
 <div id="page">
+	<div class="error">You don't have access to Admin Page</div>
 	<h2>Permissions for <?= $myACL->getUsername($userID); ?>:</h2>
 	<? 
 		$userACL = new ACL($userID);
