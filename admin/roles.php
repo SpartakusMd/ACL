@@ -1,5 +1,5 @@
-<?php 
-include("../assets/php/database.php"); 
+<?php
+include("../assets/php/database.php");
 include("../assets/php/class.acl.php");
 $myACL = new ACL();
 if (isset($_POST['action']))
@@ -60,7 +60,7 @@ if ($myACL->hasPermission('access_admin') != true)
 <div id="page">
 	<? if ($_GET['action'] == '') { ?>
     	<h2>Select a Role to Manage:</h2>
-        <? 
+        <?
 		$roles = $myACL->getAllRoles('full');
 		foreach ($roles as $k => $v)
 		{
@@ -71,9 +71,9 @@ if ($myACL->hasPermission('access_admin') != true)
 			echo "No roles yet.<br />";
 		} ?>
         <input type="button" name="New" value="New Role" onclick="window.location='?action=role'" />
-    <? } 
-    if ($_GET['action'] == 'role') { 
-		if ($_GET['roleID'] == '') { 
+    <? }
+    if ($_GET['action'] == 'role') {
+		if ($_GET['roleID'] == '') {
 		?>
     	<h2>New Role:</h2>
         <? } else { ?>
@@ -82,7 +82,7 @@ if ($myACL->hasPermission('access_admin') != true)
         	<label for="roleName">Name:</label><input type="text" name="roleName" id="roleName" value="<?= $myACL->getRoleNameFromID($_GET['roleID']); ?>" />
             <table border="0" cellpadding="5" cellspacing="0">
             <tr><th></th><th>Allow</th><th>Deny</th><th>Ignore</th></tr>
-            <? 
+            <?
             $rPerms = $myACL->getRolePerms($_GET['roleID']);
             $aPerms = $myACL->getAllPerms('full');
             foreach ($aPerms as $k => $v)

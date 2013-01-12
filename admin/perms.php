@@ -1,5 +1,5 @@
-<?php 
-include("../assets/php/database.php"); 
+<?php
+include("../assets/php/database.php");
 include("../assets/php/class.acl.php");
 $myACL = new ACL();
 if (isset($_POST['action']))
@@ -34,7 +34,7 @@ if ($myACL->hasPermission('access_admin') != true)
 <div id="page">
 	<? if ($_GET['action'] == '') { ?>
     	<h2>Select a Permission to Manage:</h2>
-        <? 
+        <?
 		$roles = $myACL->getAllPerms('full');
 		foreach ($roles as $k => $v)
 		{
@@ -45,9 +45,9 @@ if ($myACL->hasPermission('access_admin') != true)
 			echo "No permissions yet.<br />";
 		} ?>
         <input type="button" name="New" value="New Permission" onclick="window.location='?action=perm'" />
-    <? } 
-    if ($_GET['action'] == 'perm') { 
-		if ($_GET['permID'] == '') { 
+    <? }
+    if ($_GET['action'] == 'perm') {
+		if ($_GET['permID'] == '') {
 		?>
     	<h2>New Permission:</h2>
         <? } else { ?>

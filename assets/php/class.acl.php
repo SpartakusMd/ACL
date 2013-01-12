@@ -5,7 +5,7 @@
 		var $perms = array();		//Array : Stores the permissions for the user
 		var $userID = 0;			//Integer : Stores the ID of the current user
 		var $userRoles = array();	//Array : Stores the roles of the current user
-		
+
 		function __constructor($userID = '')
 		{
 			if ($userID != '')
@@ -17,13 +17,13 @@
 			$this->userRoles = $this->getUserRoles('ids');
 			$this->buildACL();
 		}
-		
+
 		function ACL($userID = '')
 		{
 			$this->__constructor($userID);
 			//crutch for PHP4 setups
 		}
-		
+
 		function buildACL()
 		{
 			//first, get the rules for the user's role
@@ -34,7 +34,7 @@
 			//then, get the individual user permissions
 			$this->perms = array_merge($this->perms,$this->getUserPerms($this->userID));
 		}
-		
+
 		function getPermKeyFromID($permID)
 		{
 			$strSQL = "SELECT `permKey` FROM `permissions` WHERE `ID` = " . floatval($permID) . " LIMIT 1";
@@ -42,7 +42,7 @@
 			$row = mysql_fetch_array($data);
 			return $row[0];
 		}
-		
+
 		function getPermNameFromID($permID)
 		{
 			$strSQL = "SELECT `permName` FROM `permissions` WHERE `ID` = " . floatval($permID) . " LIMIT 1";
@@ -50,7 +50,7 @@
 			$row = mysql_fetch_array($data);
 			return $row[0];
 		}
-		
+
 		function getRoleNameFromID($roleID)
 		{
 			$strSQL = "SELECT `roleName` FROM `roles` WHERE `ID` = " . floatval($roleID) . " LIMIT 1";
@@ -58,7 +58,7 @@
 			$row = mysql_fetch_array($data);
 			return $row[0];
 		}
-		
+
 		function getUserRoles()
 		{
 			$strSQL = "SELECT * FROM `user_roles` WHERE `userID` = " . floatval($this->userID) . " ORDER BY `addDate` ASC";
@@ -70,7 +70,7 @@
 			}
 			return $resp;
 		}
-		
+
 		function getAllRoles($format='ids')
 		{
 			$format = strtolower($format);
@@ -88,7 +88,7 @@
 			}
 			return $resp;
 		}
-		
+
 		function getAllPerms($format='ids')
 		{
 			$format = strtolower($format);
@@ -130,7 +130,7 @@
 			}
 			return $perms;
 		}
-		
+
 		function getUserPerms($userID)
 		{
 			$strSQL = "SELECT * FROM `user_perms` WHERE `userID` = " . floatval($userID) . " ORDER BY `addDate` ASC";
@@ -149,7 +149,7 @@
 			}
 			return $perms;
 		}
-		
+
 		function userHasRole($roleID)
 		{
 			foreach($this->userRoles as $k => $v)
@@ -161,7 +161,7 @@
 			}
 			return false;
 		}
-		
+
 		function hasPermission($permKey)
 		{
 			$permKey = strtolower($permKey);
@@ -177,7 +177,7 @@
 				return false;
 			}
 		}
-		
+
 		function getUsername($userID)
 		{
 			$strSQL = "SELECT `username` FROM `users` WHERE `ID` = " . floatval($userID) . " LIMIT 1";

@@ -1,5 +1,5 @@
-<?php 
-include("../assets/php/database.php"); 
+<?php
+include("../assets/php/database.php");
 include("../assets/php/class.acl.php");
 $myACL = new ACL();
 if ($myACL->hasPermission('access_admin') != true)

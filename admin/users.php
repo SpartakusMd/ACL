@@ -1,5 +1,5 @@
-<?php 
-include("../assets/php/database.php"); 
+<?php
+include("../assets/php/database.php");
 include("../assets/php/class.acl.php");
 $myACL = new ACL();
 if (isset($_POST['action']))
@@ -21,7 +21,7 @@ if (isset($_POST['action']))
 					mysql_query($strSQL);
 				}
 			}
-			
+
 		break;
 		case 'savePerms':
 			$redir = "?action=user&userID=" . $_POST['userID'];
@@ -60,7 +60,7 @@ if ($myACL->hasPermission('access_admin') != true)
 <div id="page">
 	<? if ($_GET['action'] == '' ) { ?>
     	<h2>Select a User to Manage:</h2>
-        <? 
+        <?
 		$strSQL = "SELECT * FROM `users` ORDER BY `Username` ASC";
 		$data = mysql_query($strSQL);
 		while ($row = mysql_fetch_assoc($data))
@@ -69,7 +69,7 @@ if ($myACL->hasPermission('access_admin') != true)
 		}
     } ?>
     <?
-    if ($_GET['action'] == 'user' ) { 
+    if ($_GET['action'] == 'user' ) {
 		$userACL = new ACL($_GET['userID']);
 	?>
     	<h2>Managing <?= $myACL->getUsername($_GET['userID']); ?>:</h2>
@@ -101,7 +101,7 @@ if ($myACL->hasPermission('access_admin') != true)
      <form action="users.php" method="post">
         <table border="0" cellpadding="5" cellspacing="0">
         <tr><th></th><th>Member</th><th>Not Member</th></tr>
-        <? 
+        <?
 		$roleACL = new ACL($_GET['userID']);
 		$roles = $roleACL->getAllRoles('full');
         foreach ($roles as $k => $v)
@@ -126,13 +126,13 @@ if ($myACL->hasPermission('access_admin') != true)
     </form>
      <? } ?>
      <?
-    if ($_GET['action'] == 'perms' ) { 
+    if ($_GET['action'] == 'perms' ) {
 	?>
     	<h2>Manage User Permissions: (<?= $myACL->getUsername($_GET['userID']); ?>)</h2>
         <form action="users.php" method="post">
             <table border="0" cellpadding="5" cellspacing="0">
             <tr><th></th><th></th></tr>
-            <? 
+            <?
 			$userACL = new ACL($_GET['userID']);
             $rPerms = $userACL->perms;
             $aPerms = $userACL->getAllPerms('full');

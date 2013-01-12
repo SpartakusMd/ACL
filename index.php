@@ -1,5 +1,5 @@
-<?php 
-include("assets/php/database.php"); 
+<?php
+include("assets/php/database.php");
 include("assets/php/class.acl.php");
 
 $userID = $_SESSION['userID'];
@@ -20,9 +20,9 @@ $myACL = new ACL();
 	<?php if(isset($_GET['no_perm'])): ?>
 	<div class="error">You don't have access to Admin Page</div>
 	<?php endif; ?>
-	
+
 	<h2>Permissions for <?= $myACL->getUsername($userID); ?>:</h2>
-	<? 
+	<?
 		$userACL = new ACL($userID);
 		$aPerms = $userACL->getAllPerms('full');
 		foreach ($aPerms as $k => $v)
@@ -41,7 +41,7 @@ $myACL = new ACL();
 		}
 	?>
     <h3>Change User:</h3>
-    <? 
+    <?
 		$strSQL = "SELECT * FROM `users` ORDER BY `Username` ASC";
 		$data = mysql_query($strSQL);
 		while ($row = mysql_fetch_assoc($data))
