@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff url(../img/headerTile.png) top left repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000;
+	font-size: 12px;
+}
+a {
+	color: #000;
+}
+#header {
+	background: url(../img/headerLogo.png) top left no-repeat;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 288px;
+	height: 93px;
+}
+#page {
+	position: relative;
+	left: 10px;
+	top: 100px;
+	border: 1px solid black;
+	width: 700px;
+	padding: 5px;
+}
+#adminButton {
+	position: absolute;
+	top: 50px;
+	left: 400px;
+	padding: 3px;
+	background-color: #fff;
+}
+input[type=button],input[type=submit] {;
+	background-color: #9b1b1b;
+	color: #fff;
+	border: 1px solid #690101;
+	padding: 2px;
+	margin: 3px;
+}
+label {
+	font-weight: bold;
+	margin-right: 10px;
+}

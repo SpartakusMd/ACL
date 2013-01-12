@@ -1,0 +1,8 @@
+DROP TABLE `permissions` ,`roles` ,`role_perms` ,`users` ,`user_perms` ,`user_roles`, `app` ;
+CREATE TABLE `permissions` (`ID` bigint(20) unsigned zerofill NOT NULL auto_increment,`permKey` varchar(30) NOT NULL,`permName` varchar(30) NOT NULL, PRIMARY KEY  (`ID`),UNIQUE KEY `permKey` (`permKey`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `roles` (`ID` bigint(20) unsigned zerofill NOT NULL auto_increment,`roleName` varchar(20) NOT NULL,PRIMARY KEY  (`ID`), UNIQUE KEY `roleName` (`roleName`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `role_perms` (`ID` bigint(20) unsigned zerofill NOT NULL auto_increment,`roleID` bigint(20) NOT NULL,`permID` bigint(20) NOT NULL,`value` tinyint(1) NOT NULL default '0',`addDate` datetime NOT NULL, PRIMARY KEY  (`ID`),UNIQUE KEY `roleID_2` (`roleID`,`permID`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `users` (`ID` int(10) unsigned zerofill NOT NULL auto_increment,`username` varchar(20) NOT NULL,PRIMARY KEY  (`ID`),KEY `Username` (`username`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `user_perms` (`ID` bigint(20) unsigned zerofill NOT NULL auto_increment,`userID` bigint(20) NOT NULL, `permID` bigint(20) NOT NULL,`value` tinyint(1) NOT NULL default '0', `addDate` datetime NOT NULL, PRIMARY KEY  (`ID`), UNIQUE KEY `userID` (`userID`,`permID`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `user_roles` (`userID` bigint(20) NOT NULL,`roleID` bigint(20) NOT NULL,`addDate` datetime NOT NULL,UNIQUE KEY `userID` (`userID`,`roleID`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `app` (`ID` int(11) unsigned zerofill NOT NULL auto_increment,`restore` datetime NOT NULL,PRIMARY KEY  (`ID`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
