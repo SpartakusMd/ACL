@@ -3,6 +3,7 @@ ACL
 
 A Simple PHP ACL
 This ACL gives you control over the users, user roles and their permissions.
+This ACL is a improved version of the ACL from a net.tuts+ tuturial.
 
 INSTALL STEPS:
 ===
